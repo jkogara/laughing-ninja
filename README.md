@@ -6,8 +6,8 @@
 #####  Execute
   With parameters:
     
-    bundle exec ruby ./send_email.rb -t name@example.com -f name@example.com
+    bundle exec ./send_email.rb -t name@example.com -f name@example.com
 
   Our without, you'll be prompted for the to and from email addresses:
     
-    bundle exec ruby ./send_email.rb
+    bundle exec ./send_email.rb
