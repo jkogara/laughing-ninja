@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Hacker News Homepage General Stats</title>
+  <style type="text/css">
+
+      #outlook a {
+          padding: 0;
+      }
+
+      body {
+          width: 100% !important;
+          -webkit-text-size-adjust: 100%;
+          -ms-text-size-adjust: 100%;
+          margin: 0;
+          padding: 0;
+      }
+
+      .ExternalClass {
+          width: 100%;
+      }
+
+      .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+          line-height: 100%;
+      }
+
+      #backgroundTable {
+          margin: 0;
+          padding: 0;
+          width: 100% !important;
+          line-height: 100% !important;
+      }
+
+      img {
+          outline: none;
+          text-decoration: none;
+          -ms-interpolation-mode: bicubic;
+      }
+
+      a img {
+          border: none;
+      }
+
+      .image_fix {
+          display: block;
+      }
+
+      p {
+          margin: 1em 0;
+      }
+
+      h1, h2, h3, h4, h5, h6 {
+          color: black !important;
+      }
+
+      h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+          color: blue !important;
+      }
+
+      h1 a:active, h2 a:active, h3 a:active, h4 a:active, h5 a:active, h6 a:active {
+          color: red !important;
+      }
+
+      h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited {
+          color: purple !important;
+      }
+
+      .table_class {
+          font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+          font-size: 12px;
+          margin: 45px;
+          width: 480px;
+          text-align: left;
+          border-collapse: collapse;
+          border: 1px solid #6cf;
+      }
+
+      .table_class th {
+          padding: 20px;
+          font-weight: normal;
+          font-size: 13px;
+          color: #039;
+          text-transform: uppercase;
+          border-right: 1px solid #0865c2;
+          border-top: 1px solid #0865c2;
+          border-left: 1px solid #0865c2;
+          border-bottom: 1px solid #fff;
+      }
+
+      .table_class td {
+          padding: 10px 20px;
+          color: #669;
+          border-right: 1px dashed #6cf;
+      }
+
+      a:link {
+          color: orange;
+      }
+
+      a:visited {
+          color: blue;
+      }
+
+      a:hover {
+          color: green;
+      }
+
+      @media only screen and (max-device-width: 480px) {
+
+          a[href^="tel"], a[href^="sms"] {
+              text-decoration: none;
+              color: black;
+              pointer-events: none;
+              cursor: default;
+          }
+
+          .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+              text-decoration: default;
+              color: orange !important;
+              pointer-events: auto;
+              cursor: default;
+          }
+      }
+
+      @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+
+          a[href^="tel"], a[href^="sms"] {
+              text-decoration: none;
+              color: blue; /* or whatever your want */
+              pointer-events: none;
+              cursor: default;
+          }
+
+          .mobile_link a[href^="tel"], .mobile_link a[href^="sms"] {
+              text-decoration: default;
+              color: orange !important;
+              pointer-events: auto;
+              cursor: default;
+          }
+      }
+
+      @media only screen and (-webkit-min-device-pixel-ratio: 2) {
+      }
+
+      @media only screen and (-webkit-device-pixel-ratio:.75) {
+      }
+
+      @media only screen and (-webkit-device-pixel-ratio:1) {
+      }
+
+      @media only screen and (-webkit-device-pixel-ratio:1.5) {
+      }
+  </style>
+
+  <!--[if IEMobile 7]>
+  <style type="text/css">
+
+  </style>
+  <![endif]-->
+
+  <!--[if gte mso 9]>
+  <style>
+
+  </style>
+  <![endif]-->
+</head>
+<body>
+
+
+<table class="table_class">
+  <tr>
+    <td>
+      <img class="image_fix" src="http://ycombinator.com/images/y18.gif" width="18" height="18" style="border:1px #ffffff solid;">
+    </td>
+  </tr>
+  <tr>
+    <h3>Hacker News Homepage General Stats</h3>
+  </tr>
+  <tr>
+    <td>
+      <% unless !@instance.items.empty? && @instance.response_code == 200 %>
+          <p>Ooops, there seems to be a problem right now, those hackers must me hacking!</p>
+      <% else %>
+          <h3>The stats</h3>
+          <table class='table_class'>
+            <tbody>
+            <tr>
+              <td width="200">Mean Points Score</td>
+              <td width="200"><%= @instance.mean %></td>
+            </tr>
+            <tr>
+              <td width="200">Median Points Score</td>
+              <td width="200"><%= @instance.median %></td>
+            </tr>
+            <tr>
+              <td width="200">Modal Points</td>
+              <td width="200"><%= @instance.modal.nil? ? "None" : @instance.modal %></td>
+            </tr>
+            </tbody>
+          </table>
+
+          <h3>Articles Above the Mean score</h3>
+          <table class='table_class'>
+            <tbody>
+                <tr>
+                  <th></th>
+                  <th></th>
+                  <th>Score</th>
+                </tr>
+            <% @instance.items_above_mean_score.each do |item| %>
+                <tr>
+                  <td width="400">
+                    <%= item['title'] %>
+                  </td>
+                  <td width="400">
+                    <a href="<%= item['url'] %>" target="_blank" title="<%= item['title'] %>" style="color: #1e90ff;
+                            text-decoration: none;">
+                      <%= item['url'] %>
+                    </a>
+                  </td>
+                  <td width="30">
+                      <%= item['points'] %>
+                    </a>
+                  </td>
+                </tr>
+            <% end %>
+            </tbody>
+          </table>
+      <% end %>
+    </td>
+  </tr>
+</table>
+</body>
+</html>

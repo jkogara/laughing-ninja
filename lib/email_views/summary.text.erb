@@ -1,0 +1,14 @@
+Hacker News Homepage General Stats
+<% unless !@instance.items.empty? && @instance.response_code == 200 %>
+Ooops, there seems to be a problem right now, those hackers must me hacking!
+<% else %>
+The Stats:
+    Mean Points Score: <%= @instance.mean %>
+    Median Points Score: <%= @instance.median %>
+    Modal Points: <%= @instance.modal.nil? ? "None" : @instance.modal %>
+
+Articles Above the Mean score
+  <% @instance.items_above_mean_score.each do |item| %>
+    <%= item['title'] %>: <%= item['url'] %>
+  <% end %>
+<% end %>
