@@ -4,8 +4,10 @@
     bundle install --without test development
 
 #  Execute
-  With parameters
+  With parameters:
+    
     bundle exec ruby ./send_email.rb -t name@example.com -f name@example.com
 
-  Our without, you'll be prompted for the to and from email addresses
+  Our without, you'll be prompted for the to and from email addresses:
+    
     bundle exec ruby ./send_email.rb
