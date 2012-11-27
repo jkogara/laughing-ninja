@@ -1,9 +1,9 @@
-##### Basic class to parse the front page of the hackernews.com API #########
+# Basic class to parse the front page of the hackernews.com API
 
-#  Setup: 
+#####  Setup: 
     bundle install --without test development
 
-#  Execute
+#####  Execute
   With parameters:
     
     bundle exec ruby ./send_email.rb -t name@example.com -f name@example.com
